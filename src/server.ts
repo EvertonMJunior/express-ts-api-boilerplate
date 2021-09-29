@@ -37,9 +37,5 @@ const gracefulShutdown = (signal) => {
 
 process.on("SIGTERM", gracefulShutdown);
 process.on("SIGINT", gracefulShutdown);
-process.on("SIGKILL", () => {
-  console.log("💀 Received SIGKILL, shutting");
-  process.exit(0);
-});
 
 export default appController;
