@@ -30,5 +30,5 @@ COPY --from=api-build /usr/src/organization/api/node_modules ./node_modules
 COPY --from=api-build /usr/src/organization/api/build ./build
 
 # Start
-CMD [ "yarn", "start" ]
+CMD [ "node", "build/server.js" ]
 EXPOSE 80
