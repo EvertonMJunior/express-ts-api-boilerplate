@@ -1,6 +1,5 @@
 import { Router } from "express";
 
-import authenticator from "src/middlewares/authenticator.middleware";
 import usersRoutes from "./users.routes";
 
 class AuthRoutesController {
@@ -14,7 +13,7 @@ class AuthRoutesController {
   }
 
   private setupMiddlewares() {
-    this.router.use(authenticator());
+    // this.router.use(authenticator());
   }
 
   private setupRoutes() {

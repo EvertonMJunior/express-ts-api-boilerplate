@@ -1,8 +1,9 @@
-import { IService, Service } from "src/interfaces/Service";
+import { IService, Service } from "../../interfaces/Service";
 import { NextFunction, Request, Response } from "express";
 import { ParamsDictionary } from "express-serve-static-core";
 import { ParsedQs } from "qs";
 import User from "../../database/postgres/entities/User";
+import NotFoundException from "../../exceptions/NotFoundException";
 
 class GetUsersService extends Service implements IService {
   public async handle(
@@ -10,7 +11,14 @@ class GetUsersService extends Service implements IService {
     res: Response<any>,
     next: NextFunction
   ): Promise<Response<any> | void> {
+    const { id } = req.query;
+
     const usersResult = await this.execute();
+
+    if (true) {
+      return next(new NotFoundException("Users not found."));
+    }
+
     return res.json(usersResult);
   }
 
