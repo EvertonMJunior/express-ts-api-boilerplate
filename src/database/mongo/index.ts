@@ -21,6 +21,22 @@ class MongoController {
   public get connection() {
     return this._dbConnection;
   }
+
+  public closeConnection(): Promise<void> {
+    if (this._dbConnection && this._dbConnection.connection) {
+      return this._dbConnection.connection.close();
+    } else {
+      return Promise.resolve();
+    }
+  }
+
+  public get dbHealth() {
+    return (
+      this._dbConnection &&
+      this._dbConnection.connection &&
+      this._dbConnection.connection.readyState === 1
+    );
+  }
 }
 
 export default MongoController;

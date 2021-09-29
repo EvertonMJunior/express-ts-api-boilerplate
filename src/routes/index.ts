@@ -1,4 +1,5 @@
 import { Router } from "express";
+import CheckHealthService from "../services/CheckHealth";
 
 import usersRoutes from "./users.routes";
 
@@ -35,13 +36,7 @@ class UnauthRoutesController {
   }
 
   private setupRoutes() {
-    this.setupHealthCheckRoute();
-  }
-
-  private setupHealthCheckRoute() {
-    this.router.get("/health", (req, res) => {
-      res.end();
-    });
+    this.router.use("/health", new CheckHealthService().handle);
   }
 
   public get routes(): Router {

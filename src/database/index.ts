@@ -25,6 +25,16 @@ class DbController {
   public get mongoController() {
     return this._mongoController;
   }
+
+  public get dbHealth() {
+    return this._postgresController.dbHealth && this._mongoController.dbHealth;
+  }
+
+  public closeConnections() {
+    let postgresClosePromise = this._postgresController.closeConnection();
+    let mongoClosePromise = this._mongoController.closeConnection();
+    return Promise.all([postgresClosePromise, mongoClosePromise]);
+  }
 }
 
 export default DbController;

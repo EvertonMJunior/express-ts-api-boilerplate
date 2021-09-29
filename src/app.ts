@@ -12,6 +12,7 @@ import DbController from "./database";
 class AppController {
   private _app: Express;
   private _dbController: DbController;
+  private _serverEnabled = true;
 
   constructor() {
     this._app = express();
@@ -53,6 +54,14 @@ class AppController {
 
   public get dbController() {
     return this._dbController;
+  }
+
+  public get serverEnabled() {
+    return this._serverEnabled;
+  }
+
+  public disableServer() {
+    this._serverEnabled = false;
   }
 }
 
