@@ -16,7 +16,7 @@ services:
       TYPEORM_PORT: 5432
       TYPEORM_SYNCHRONIZE: "false"
       TYPEORM_LOGGING: "false"
-      TYPEORM_ENTITIES: "build/database/entity/**/*.js"
+      TYPEORM_ENTITIES: "build/database/postgres/entities/**/*.js"
       MONGO_URI: "mongodb://"
       TZ: "UTC"
       NODE_ENV: "production"
